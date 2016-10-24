@@ -1,0 +1,13 @@
+﻿body {
+}
+#navIndex{
+    margin-bottom:40px;
+    text-align:center;
+}
+#mainContainer{
+    margin-bottom:200px;
+}
+.contentContainer{
+    margin-top:50px;
+   display:none;
+ }

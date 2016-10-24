@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: G:\Downloads\DTOs\Tfl.Api.Presentation.Entities.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{554E56EC-92F1-410A-95C4-C5C7EED25DCD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Tfl.Api.Presentation.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ApplicationVersion>5.2.1.207</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Tfl.Api.Presentation.Entities</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\_GIT\Transport\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveServiceType.cs" />
+    <Compile Include="SearchMatch.cs" />
+    <Compile Include="AddressMatch.cs" />
+    <Compile Include="AggregateResponse.cs" />
+    <Compile Include="AdditionalProperties.cs" />
+    <Compile Include="ApiError.cs" />
+    <Compile Include="CacheSettings.cs" />
+    <Compile Include="CarParkOccupancy.cs" />
+    <Compile Include="Bay.cs" />
+    <Compile Include="RoadDisruptionImpactArea.cs" />
+    <Compile Include="RoadDisruptionLine.cs" />
+    <Compile Include="RoadDisruptionTdmExtension.cs" />
+    <Compile Include="LondonAirForecast.cs" />
+    <Compile Include="CurrentForecast.cs" />
+    <Compile Include="DisruptedStreetSegment.cs" />
+    <Compile Include="WaterwayDetail.cs" />
+    <Compile Include="Waterway.cs" />
+    <Compile Include="DisruptionOverride.cs" />
+    <Compile Include="LineServiceType.cs" />
+    <Compile Include="LineSpecificServiceType.cs" />
+    <Compile Include="LineServiceTypeInfo.cs" />
+    <Compile Include="RoadMeta.cs" />
+    <Compile Include="PlaceMeta.cs" />
+    <Compile Include="CabWiseMeta.cs" />
+    <Compile Include="JourneyMeta.cs" />
+    <Compile Include="LineMeta.cs" />
+    <Compile Include="SearchMeta.cs" />
+    <Compile Include="SearchCategory.cs" />
+    <Compile Include="TicketAssistantMeta.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="StopPointMeta.cs" />
+    <Compile Include="FaresMeta.cs" />
+    <Compile Include="PlacePolygon.cs" />
+    <Compile Include="CanalPlacemark.cs" />
+    <Compile Include="WaterwayLineString.cs" />
+    <Compile Include="IIdentifiable.cs" />
+    <Compile Include="IGeoData.cs" />
+    <Compile Include="CycleSuperhighway.cs" />
+    <Compile Include="Redirect.cs" />
+    <Compile Include="TradingNames.cs" />
+    <Compile Include="OperatorTypes.cs" />
+    <Compile Include="Operator.cs" />
+    <Compile Include="Coordinate.cs" />
+    <Compile Include="GeoJsonObject.cs" />
+    <Compile Include="OrderedRoute.cs" />
+    <Compile Include="PlaceSearchMatch.cs" />
+    <Compile Include="GeoCodeSearchMatch.cs" />
+    <Compile Include="ProjectPhaseEnum.cs" />
+    <Compile Include="RoadProject.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="StatusSeverity.cs" />
+    <Compile Include="StatusSeverityDropDown.cs" />
+    <Compile Include="StreetMatch.cs" />
+    <Compile Include="StreetResponse.cs" />
+    <Compile Include="TimetableRoute.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="LineInfo.cs" />
+    <Compile Include="RouteInfo.cs" />
+    <Compile Include="ServiceInfo.cs" />
+    <Compile Include="LineModeGroup.cs" />
+    <Compile Include="MissingNaptan.cs" />
+    <Compile Include="StopPointRouteSection.cs" />
+    <Compile Include="MatchedRoute.cs" />
+    <Compile Include="Subscription.cs" />
+    <Compile Include="TimetablePeriodType.cs" />
+    <Compile Include="UrlList.cs" />
+    <Compile Include="Distance.cs" />
+    <Compile Include="EtlSubTaskMessage.cs" />
+    <Compile Include="ModeList.cs" />
+    <Compile Include="RouteSectionNaptanEntrySequence.cs" />
+    <Compile Include="Interval.cs" />
+    <Compile Include="KnownJourney.cs" />
+    <Compile Include="OperationalInformation.cs" />
+    <Compile Include="Period.cs" />
+    <Compile Include="PlacesResponse.cs" />
+    <Compile Include="ReferencedStop.cs" />
+    <Compile Include="Schedule.cs" />
+    <Compile Include="ServiceFrequency.cs" />
+    <Compile Include="StopPointCategory.cs" />
+    <Compile Include="StopPointsResponse.cs" />
+    <Compile Include="DisruptedPoint.cs" />
+    <Compile Include="DisruptedPointFamily.cs" />
+    <Compile Include="LineGroup.cs" />
+    <Compile Include="LineRouteSection.cs" />
+    <Compile Include="LineStationParameter.cs" />
+    <Compile Include="MatchedRouteSections.cs" />
+    <Compile Include="MatchedStop.cs" />
+    <Compile Include="RouteSearchMatch.cs" />
+    <Compile Include="RouteSearchResponse.cs" />
+    <Compile Include="EtlTaskBatch.cs" />
+    <Compile Include="EtlTaskBatchItem.cs" />
+    <Compile Include="InstructionStep.cs" />
+    <Compile Include="PathAttribute.cs" />
+    <Compile Include="PlaceCategory.cs" />
+    <Compile Include="Prediction.cs" />
+    <Compile Include="RoadCorridor.cs" />
+    <Compile Include="Disruption.cs" />
+    <Compile Include="HttpVerb.cs" />
+    <Compile Include="Identifier.cs" />
+    <Compile Include="Instruction.cs" />
+    <Compile Include="NotificationEventDetail.cs" />
+    <Compile Include="Line.cs" />
+    <Compile Include="LineStatus.cs" />
+    <Compile Include="EtlTask.cs" />
+    <Compile Include="EtlRequest.cs" />
+    <Compile Include="Mode.cs" />
+    <Compile Include="NotificationEvent.cs" />
+    <Compile Include="NotificationSubscription.cs" />
+    <Compile Include="PlannedWorks.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="Place.cs" />
+    <Compile Include="RoadDisruption.cs" />
+    <Compile Include="RouteMatch.cs" />
+    <Compile Include="RouteSection.cs" />
+    <Compile Include="RouteSequence.cs" />
+    <Compile Include="ContentSearchMatch.cs" />
+    <Compile Include="SearchResponse.cs" />
+    <Compile Include="StopPoint.cs" />
+    <Compile Include="StopPointSequence.cs" />
+    <Compile Include="StopType.cs" />
+    <Compile Include="Street.cs" />
+    <Compile Include="StreetSegment.cs" />
+    <Compile Include="PredictionStats.cs" />
+    <Compile Include="StationInterval.cs" />
+    <Compile Include="Timetable.cs" />
+    <Compile Include="TimeTableJourney.cs" />
+    <Compile Include="TimetableResponse.cs" />
+    <Compile Include="TwentyFourHourClockTime.cs" />
+    <Compile Include="ValidityPeriod.cs" />
+    <Compile Include="AccidentStats\AccidentDetail.cs" />
+    <Compile Include="AccidentStats\AccidentStatsOrderedSummary.cs" />
+    <Compile Include="AccidentStats\Vehicle.cs" />
+    <Compile Include="AccidentStats\Casualty.cs" />
+    <Compile Include="ApiHealth\ApiHealth.cs" />
+    <Compile Include="ApiHealth\GlobalApiHealthStatus.cs" />
+    <Compile Include="ApiHealth\ServiceStatus.cs" />
+    <Compile Include="Fares\FaresPeriod.cs" />
+    <Compile Include="Fares\RecommendationPeriod.cs" />
+    <Compile Include="Fares\DiscountType.cs" />
+    <Compile Include="Fares\AgeGroup.cs" />
+    <Compile Include="Fares\Recommendation.cs" />
+    <Compile Include="Fares\RecommendationRequest.cs" />
+    <Compile Include="Fares\RecommendationResponse.cs" />
+    <Compile Include="Fares\Ticket.cs" />
+    <Compile Include="Fares\FaresMode.cs" />
+    <Compile Include="Fares\RiverRoute.cs" />
+    <Compile Include="Fares\FaresSection.cs" />
+    <Compile Include="Fares\PassengerType.cs" />
+    <Compile Include="Fares\TicketTime.cs" />
+    <Compile Include="Fares\FareBounds.cs" />
+    <Compile Include="Fares\Fare.cs" />
+    <Compile Include="Fares\FareDetails.cs" />
+    <Compile Include="Fares\TicketType.cs" />
+    <Compile Include="WebCAT\PtalScenario.cs" />
+    <Compile Include="WebCAT\WebCatLocationInformation.cs" />
+    <Compile Include="WebCAT\PtalContour.cs" />
+    <Compile Include="WebCAT\PtalPoint.cs" />
+    <Compile Include="WebCAT\PtalResult.cs" />
+    <Compile Include="WebCAT\TravelTimeStatistic.cs" />
+    <Compile Include="WebCAT\Ptai.cs" />
+    <Compile Include="WebCAT\ScenarioMode.cs" />
+    <Compile Include="WebCAT\Scenario.cs" />
+    <Compile Include="WebCAT\ScenarioTimeOfDay.cs" />
+    <Compile Include="WebCAT\TravelTime.cs" />
+    <Compile Include="WebCAT\TravelTimeDirection.cs" />
+    <Compile Include="WebCAT\ZoneStatistic.cs" />
+    <Compile Include="Cabwise\Operators.cs" />
+    <Compile Include="Cabwise\Wrapper.cs" />
+    <Compile Include="Cabwise\Attribution.cs" />
+    <Compile Include="Cabwise\Header.cs" />
+    <Compile Include="JourneyPlanner\JourneyPlannerCycleHireDockingStationData.cs" />
+    <Compile Include="JourneyPlanner\DateTimeType.cs" />
+    <Compile Include="JourneyPlanner\FootPathElement.cs" />
+    <Compile Include="JourneyPlanner\ImparedOptions.cs" />
+    <Compile Include="JourneyPlanner\IndividualTransportOptions.cs" />
+    <Compile Include="JourneyPlanner\JourneyPlannerCommands.cs" />
+    <Compile Include="JourneyPlanner\Location.cs" />
+    <Compile Include="JourneyPlanner\LocationType.cs" />
+    <Compile Include="JourneyPlanner\MapItem.cs" />
+    <Compile Include="JourneyPlanner\MeansOfTransport.cs" />
+    <Compile Include="JourneyPlanner\PartialRoute.cs" />
+    <Compile Include="JourneyPlanner\Path.cs" />
+    <Compile Include="JourneyPlanner\Point.cs" />
+    <Compile Include="JourneyPlanner\PublicTransportOptions.cs" />
+    <Compile Include="JourneyPlanner\Route.cs" />
+    <Compile Include="JourneyPlanner\SearchCriteria.cs" />
+    <Compile Include="JourneyPlanner\SearchParameterType.cs" />
+    <Compile Include="JourneyPlanner\TimeAdjustment.cs" />
+    <Compile Include="JourneyPlanner\TimeAdjustments.cs" />
+    <Compile Include="JourneyPlanner\Obstacle.cs" />
+    <Compile Include="JourneyPlanner\Disambiguation.cs" />
+    <Compile Include="JourneyPlanner\DisambiguationOption.cs" />
+    <Compile Include="JourneyPlanner\JourneyResult.cs" />
+    <Compile Include="JourneyPlanner\DisambiguationResult.cs" />
+    <Compile Include="JourneyPlanner\Journey.cs" />
+    <Compile Include="JourneyPlanner\Leg.cs" />
+    <Compile Include="JourneyPlanner\JourneyVector.cs" />
+    <Compile Include="JourneyPlanner\PlannedWork.cs" />
+    <Compile Include="JourneyPlanner\RouteOption.cs" />
+    <Compile Include="JourneyPlanner\ItineraryResult.cs" />
+    <Compile Include="Timetables\Disambiguation.cs" />
+    <Compile Include="Timetables\DisambiguationOption.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Comparers\LineStationParameterComparer.cs" />
+    <Compile Include="EtlPerformance\FailedTask.cs" />
+    <Compile Include="EtlPerformance\TaskPerformance.cs" />
+    <Compile Include="EtlPerformance\TaskPerformanceData.cs" />
+    <Compile Include="EtlPerformance\TaskPerformanceHistory.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Index.css" rel="stylesheet" />
+<script src="~/Scripts/Index.js"></script>
+
+
+<ul class="nav nav-tabs nav-justified" id="navIndex">
+    <li class="navbar-link navBarIndex" idContainer="containerTube" id="1"><a>Tube</a></li>
+    <li class="navbar-link navBarIndex" idContainer="containerBus" id="2"><a>Bus</a></li>
+    <li class="navbar-link navBarIndex" idContainer="containerDLR" id="3"><a>DLR</a></li>
+    <li class="navbar-link navBarIndex" idContainer="containerNRail" id="4"><a>National Rail</a></li>
+</ul>
+<div class="container" id="mainContainer">
+    <div class="container contentContainer" id="containerTube">
+        <h3>Container Tube!</h3>
+        <table class="table table-condensed" id="tableLineTube">
+            <tr>
+                <th>Name</th>
+                <th>Route Section</th>
+            </tr>
+        </table>
+    </div>
+    <div class="container contentContainer" id="containerBus">
+        <h3>Container Bus!</h3>
+    </div>
+    <div class="container contentContainer" id="containerDLR">
+        <h3>Container DLR!</h3>
+    </div>
+    <div class="container contentContainer" id="containerNRail">
+        <h3>Container National Rail!</h3>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script id="addLinesTubeTmpl" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${Name}</td>
+        <td>${RouteSection}</td>
+    </tr>
+</script>
+
