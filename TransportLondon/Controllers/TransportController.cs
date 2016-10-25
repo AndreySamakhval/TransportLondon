@@ -11,9 +11,27 @@ namespace TransportLondon.Controllers
     {
         TflService _service = new TflService();
 
-        public JsonResult Line(string Mode)
+        public JsonResult Lines(string mode)
         {
-            return Json(_service.GetLine(Mode), JsonRequestBehavior.AllowGet);
+            switch(mode)
+                {
+                case "Tube":
+                    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet);
+                //case "Bus":
+                //    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet);
+                //case "DLR":
+                //    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet); 
+                //case "NRail":
+                //    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet);
+                default: return null;
+            }
+            
+        }
+
+        public JsonResult Line(string id)
+        {
+            
+            return Json(_service.GetLine(id), JsonRequestBehavior.AllowGet);
         }
     }
 }

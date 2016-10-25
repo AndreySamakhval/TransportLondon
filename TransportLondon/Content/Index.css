@@ -8,6 +8,34 @@
     margin-bottom:200px;
 }
 .contentContainer{
-    margin-top:50px;
    display:none;
  }
+#tableLineTube{
+    background-color:whitesmoke;
+    /*background-color:white;*/
+}
+.containerTr{
+}
+.tdNameTube{
+    margin:0px;
+
+}
+.tdTypeTube{
+        margin:0px;
+}
+#tableStaationsTube{
+    width:300px;
+    background-color:whitesmoke;
+
+}
+#tubeStations{
+    display:none;
+}
+
+#btnHideStationTube{
+}
+#divMapsTube{
+    height:600px !important;
+    width:600px !important;
+}
+

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TransportLondon.Viewmodel
 {
-    public class LineViewModel
+    public class LineTubeViewModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string ModeName { get; set; }
-        public string RouteSection { get; set; }
+      //  public string ModeName { get; set; }
+        public string ServiceType { get; set; }
     }
 }
