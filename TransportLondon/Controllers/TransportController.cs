@@ -9,7 +9,12 @@ namespace TransportLondon.Controllers
 {
     public class TransportController : Controller
     {
-        TflService _service = new TflService();
+        ITflService _service;
+
+        public TransportController(ITflService Service)
+        {
+            _service = Service;
+        }
 
         public JsonResult Lines(string mode)
         {
@@ -17,8 +22,8 @@ namespace TransportLondon.Controllers
                 {
                 case "Tube":
                     return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet);
-                //case "Bus":
-                //    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet);
+                case "Bus":
+                    return Json(_service.GetLineBus(), JsonRequestBehavior.AllowGet);
                 //case "DLR":
                 //    return Json(_service.GetLineTube(), JsonRequestBehavior.AllowGet); 
                 //case "NRail":
@@ -33,5 +38,33 @@ namespace TransportLondon.Controllers
             
             return Json(_service.GetLine(id), JsonRequestBehavior.AllowGet);
         }
+
+        public string LineInfo(string id)
+        {
+
+            return _service.GetLineInfo(id);
+        }
+
+        public JsonResult LineStops(string id)
+        {
+
+            return Json(_service.GetStops(id), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Prediction(string id)
+        {
+            return Json(_service.GetPrediction(id), JsonRequestBehavior.AllowGet);
+        }
+
+        public string Route(string id)
+        {
+            return _service.GetRoutes(id);
+        }
+
+        public void test(string id= "490005183E")
+        {
+            _service.test(id);
+        }
+        
     }
 }

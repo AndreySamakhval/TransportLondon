@@ -17,25 +17,71 @@
     <div class="container contentContainer" id="containerTube">
         <div class="row">
             <div class="col-sm-4">
-                <h4 class="text-info">Line of the London Tube</h4>
+                <h3 class="text-info">Line of the London Tube</h3>
                 <table class="table" id="tableLineTube"></table>
             </div>
             <div class="col-sm-8">
                 <div id="tubeStations">                    
                     <h5 class="text-info">Stations of the Line:</h5>
                     <button class="btn btn-sm btn-info" id="btnShowMApTube">Show Maps</button>
+                    <button class="btn btn-sm btn-danger" id="btnHideMapTube">HideMap</button>
                     <button class="btn btn-sm btn-danger" id="btnHideStationTube">Hide</button>
-                    <table class="table table-bordered" id="tableStaationsTube"></table>
-                   
+                    <div id="scrolTable">
+                        <table class="table table-bordered table-striped" id="tableStaationsTube"></table>
+                    </div>
                 </div>
                 </div>
         </div>
         <div id="divMapsTube" style="border:solid 1px;">
-
         </div>
     </div>
     <div class="container contentContainer" id="containerBus">
-        <h3>Container Bus!</h3>
+        <h4>Lines Bus!</h4>
+
+        <button class="btn btn-sm" id="test">Test</button>
+        <div id="SearchBus">
+                <input type="text" class="form-group" id="inputSearshBus" placeholder="Enter Line">
+                <button class="btn form-group btn-sm" id="btnSearchBus">Search Bus</button>
+
+            <input type="text" class="form-group" id="inputSearshStop" placeholder="Enter Stop Name" style="margin-left:50px;">
+            <button class="btn form-group btn-sm" id="btnSearchStop">Search Stop Point</button>
+            <p class="text-danger" id="errorSearchBus"></p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <button class="btn btn-sm" id="btnShowBus">Show all lines</button>
+                    <div id="busLines">                        
+                        <table class="table" id="tableAllBus"></table>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div id="showLineInfo">
+                        <h4 id="nameLineTube"></h4>
+                        <div id="showLineDestination">
+                        </div>
+                        <div id="busStations">
+                            <table class="table" id="tableStationBus"></table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="bg-warning" id="timeTable">
+                        
+                        <h3 class="text-success">The time dial stop point</h3>
+                        <hr/>
+                        <h4 class="text-success" id="hStopPointName"> Select a stop point</h4>
+                        <div id="idLineStopTable">
+                            <hr />
+                            <h5 class="text-success">Available routes:</h5>
+                            <h5 class="text-success" id="availableRoute"></h5>
+                        </div>
+                        <table class="table" id="tableTimeArrivals"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
     <div class="container contentContainer" id="containerDLR">
         <h3>Container DLR!</h3>
@@ -52,8 +98,8 @@
 
 <script id="addLinesTubeTmpl" type="text/x-jquery-tmpl">
     <tr class="containerTr table-bordered" id="${Id}">        
-            <td class="tdNameTube"><p>${Name}</p></td>
-            <td class="tdTypeTube"><p>${ServiceType}</p></td>
+            <td class="tdNameTube">${Name}</td>
+            <td class="tdTypeTube">${ServiceType}</td>
     </tr>
 </script>
 
@@ -62,4 +108,20 @@
         <td class="tdNameTubeStation">${Name}</td>       
     </tr>
 </script>
-
+<script id="addLinesBusTmpl" type="text/x-jquery-tmpl">
+    <tr class="containerTrBus table-bordered" id="${Id}">
+        <td><a href="#"><div class="text-center">${Name}</div></a></td>
+    </tr>
+</script>
+<script id="addStationsBusTmpl" type="text/x-jquery-tmpl">
+    <tr class="table-bordered trStationBus" stationName="${Name}" id="${Id}">
+        <td>${Name}</td>
+    </tr>
+</script>
+<script id="addTimeTableTmpl" type="text/x-jquery-tmpl">
+    <tr class="table-bordered" id="${Id}">
+        <td class="bg-info">${NameLine}</td>
+        <td class="table-bordere bg-success">${Destination}</td>
+        <td class="bg-warning">${TimeArrive}</td>
+    </tr>
+</script>

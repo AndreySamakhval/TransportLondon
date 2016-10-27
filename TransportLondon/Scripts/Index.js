@@ -4,9 +4,7 @@
         $(this).addClass('active');
         main.showDiv($(this).attr('id'), $(this).attr('idContainer'));
     });
-
 });
-
 
 main = {
     showDiv: function (id, idc) {
@@ -15,34 +13,11 @@ main = {
         if (id == 'Tube')
             Tube.GetLine();
         if (id == 'Bus')
-            Bus.GetLine();
+            Bus.Lines();
         //if (idc == 'DLR')
         //    Tube.GetLine();
         //if (idc == 'NRail')
         //    Tube.GetLine();
-
-
-        //$.ajax({
-        //    type: 'GET',
-        //    url: '/Transport/Line/?mode='+id,
-        //    //data: ({ Name: name, Password: pass, Role: role }),
-        //    asynch: true,
-        //    success: function (output, status, xhr) {
-        //        $('#addLinesTubeTmpl').tmpl(output).appendTo('#tableLineTube');
-        //        $('.containerTr').mouseover(function () {
-        //            $(this).css('background-color', 'white');
-        //        });
-        //        $('.containerTr').mouseout(function () {
-        //            $(this).css('background-color', 'whitesmoke');
-        //        });
-        //        $('.containerTr').click(function () {
-
-        //        });
-        //    },
-        //    error: function () {
-        //        alert('Error');
-        //    }
-        //});
 
     },
     getLine: function (mode) {
@@ -53,21 +28,22 @@ main = {
             success: function (output, status, xhr) {
                 if (mode == 'Tube')
                     Tube.RenderLine(output);
+                if (mode == 'Bus')
+                    Bus.renderLines(output);
             },
             error: function () {
                 alert('Error geting line ' + mode);
             }
         });
     },
-
 }
-
 
 Tube = {
     GetLine: function () {
-        main.getLine('Tube');       
 
+        main.getLine('Tube');       
     },
+
     RenderLine: function (output) {
         $('#tableLineTube').empty();
         $('#addLinesTubeTmpl').tmpl(output).appendTo('#tableLineTube');
@@ -81,10 +57,16 @@ Tube = {
         $('.containerTr').click(function () {
             $('.containerTr').css('font-size', 'unset');
             $(this).css('font-size', 'large');
-            Tube.GetLineStops($(this).attr('id'));
+            $('#tdActive').remove();
+            $(this).append('<td id="tdActive">></td>');
+            Tube.GetLineStops($(this).attr('id'));           
+
         });
         $('#btnHideStationTube').click(function () {
             $('#tubeStations').hide();
+            $('#tdActive').remove();
+            $('.containerTr').css('font-size', 'unset');
+            $('#divMapsTube').hide();
         });
     },
     GetLineStops: function (id) {
@@ -96,10 +78,16 @@ Tube = {
                 $('#tubeStations').show();
                 $('#tableStaationsTube').empty();                
                 $('#addStationsTubeTmpl').tmpl(output).appendTo('#tableStaationsTube');
-                $('#btnShowMApTube').click(function () {
+                var displayMaps = $('#divMapsTube').css('display');
+                if (displayMaps != 'none')
                     Tube.showMap(output);
-                })          
-
+                $('#btnShowMApTube').click(function () {
+                    $('#divMapsTube').show();
+                    Tube.showMap(output);
+                });                
+                $('#btnHideMapTube').click(function () {
+                    $('#divMapsTube').hide();                   
+                });
             },
             error: function () {
                 alert('Error getting Station Tube');
@@ -110,7 +98,7 @@ Tube = {
         google.maps.visualRefresh = true;
         var London = new google.maps.LatLng(51.50853, -0.12574);
         var mapOptions = {
-            zoom: 10,
+            zoom: 11,
             center: London,
             mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
         };
@@ -131,7 +119,7 @@ Tube = {
             });
             marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
             var infowindow = new google.maps.InfoWindow({
-                content: "<div class='stationInfo'><h4>" + item.Name+"</h4>"
+                content: "<div class='stationInfo'><p>" + item.Name+"</p>"
             });
 
             // обработчик нажатия на маркер объекта
@@ -142,6 +130,120 @@ Tube = {
     }
 }
 Bus = {
-    GetLine: function(){
+    Lines: function(){
+        $('#btnSearchBus').click(function () {
+            var id = $('#inputSearshBus').val();
+            if (id == null || id == "")
+                $('#errorSearchBus').text('Enter Line!');
+            else {
+                Bus.GetLine(id);
+            }
+        });
+        $('#test').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/Transport/test/',
+                asynch: true,
+                success: function (output, status, xhr) {
+                   
+                },
+                error: function () {                   
+                }
+            });
+        });
+        Bus.GetLine('1');
+            main.getLine('Bus');
+    },
+    GetLine: function (id) {
+                $('#errorSearchBus').text('');
+                $('#nameLineTube').text('');
+                $('#showLineDestination').empty();
+                $('#tableStationBus').empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '/Transport/LineInfo/' + id,
+                    asynch: true,
+                    success: function (output, status, xhr) {
+                        if (output == "") {
+                            $('#errorSearchBus').text('This Line was not found!');
+                        } else {
+                            $('#nameLineTube').text('Information about bus line №' + id);
+                            $('#showLineDestination').empty();
+                            $('#showLineDestination').html(output);
+                            Bus.getStations(id);
+                        }
+                    },
+                    error: function () {
+                        alert('Error');
+                    }
+                });
+
+    },
+    renderLines: function (output) {
+        $('#tableAllBus').empty();
+        $('#addLinesBusTmpl').tmpl(output).appendTo('#tableAllBus');
+        $('.containerTrBus').click(function () {
+            var id = $(this).attr('id');
+            Bus.GetLine(id);
+        })
+    },
+    renderStops:function(output){
+        $('#tableStationBus').empty();
+        $('#addStationsBusTmpl').tmpl(output).appendTo('#tableStationBus');
+        $('.trStationBus').click(function () {
+            $('.trStationBus').css('background-color', 'snow');
+            $(this).css('background-color', 'lightcyan');
+            var name = $(this).attr('stationName');
+            $('#hStopPointName').text('Stop Point: "' + name + '"');
+            stop.getRoutes($(this).attr('id'));
+            stop.GetPrediction($(this).attr('id'));
+        });
+    },
+    getStations: function (id) {
+        $.ajax({
+            type: 'GET',
+            url: '/Transport/LineStops/' + id,
+            asynch: true,
+            success: function (output, status, xhr) {
+                Bus.renderStops(output);
+            },
+            error: function () {
+                alert('Error geting stops ');
+            }
+        });
+    }
 }
+
+stop = {
+    GetPrediction: function (id) {
+        $.ajax({
+            type: 'GET',
+            url: '/Transport/Prediction/' + id,
+            asynch: true,
+            success: function (output, status, xhr) {
+                stop.renderTimeTable(output)
+            },
+            error: function () {
+                alert('Error geting prediction');
+            }
+        });
+    },
+    getRoutes:function(id){
+        $.ajax({
+            type: 'GET',
+            url: '/Transport/Route/' + id,
+            asynch: true,
+            success: function (output, status, xhr) {
+                $('#availableRoute').empty();
+                $('#availableRoute').text(output);
+            },
+            error: function () {
+                alert('Error geting routes');
+            }
+        });
+    },
+    renderTimeTable: function (output) {
+        $('#tableTimeArrivals').empty();
+        $('#addTimeTableTmpl').tmpl(output).appendTo('#tableTimeArrivals');
+    }
 }

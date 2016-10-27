@@ -11,7 +11,7 @@ using Tfl.Api.Presentation.Entities;
 
 namespace TransportLondon.DAL
 {
-    public class TflApiProvider
+    public class TflApiProvider : ITflProvider
     {
         private const string AppID = "292f5d74";
         private const string Key = "3a7b5c90d215148b1f642257236147db";
@@ -25,25 +25,28 @@ namespace TransportLondon.DAL
         //get json-string
         public string GetJson(string url, string parameters = "")
         {
-            string result;
+            string result="";
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url + appParameters + parameters);
             request.ContentType = "application / json; charset = utf - 8";
-            var response = (HttpWebResponse)request.GetResponse();
-            if (response.StatusCode == HttpStatusCode.OK)
+            HttpWebResponse response;
+            try
             {
-                using (StreamReader stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                {
-                    result = stream.ReadToEnd();                   
-                }
+                response = (HttpWebResponse)request.GetResponse();
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                    using (StreamReader stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
+                    {
+                        result = stream.ReadToEnd();
+                    }
+                response.Close();               
             }
-            else
-                result = "Error";
+            catch(WebException)
+            {
+                //return null;
+                result = null;
+            }
             return result;
         }
-
-
-   
-
     }
 }
