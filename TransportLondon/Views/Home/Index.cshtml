@@ -6,22 +6,20 @@
 <script src="~/Scripts/Index.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 
-
 <ul class="nav nav-tabs nav-justified" id="navIndex">
-    <li class="navbar-link navBarIndex" idContainer="containerTube" id="Tube"><a>Tube</a></li>
     <li class="navbar-link navBarIndex" idContainer="containerBus" id="Bus"><a>Bus</a></li>
-    <li class="navbar-link navBarIndex" idContainer="containerDLR" id="DLR"><a>DLR</a></li>
-    <li class="navbar-link navBarIndex" idContainer="containerNRail" id="NRail"><a>National Rail</a></li>
+    <li class="navbar-link navBarIndex" idContainer="containerTube" id="Tube"><a>Tube</a></li>
 </ul>
 <div class="container" id="mainContainer">
     <div class="container contentContainer" id="containerTube">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <h3 class="text-info">Line of the London Tube</h3>
+                <p>(Select a line)</p>
                 <table class="table" id="tableLineTube"></table>
             </div>
-            <div class="col-sm-8">
-                <div id="tubeStations">                    
+            <div class="col-sm-7">
+                <div id="tubeStations">
                     <h5 class="text-info">Stations of the Line:</h5>
                     <button class="btn btn-sm btn-info" id="btnShowMApTube">Show Maps</button>
                     <button class="btn btn-sm btn-danger" id="btnHideMapTube">HideMap</button>
@@ -30,28 +28,32 @@
                         <table class="table table-bordered table-striped" id="tableStaationsTube"></table>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
         <div id="divMapsTube" style="border:solid 1px;">
         </div>
     </div>
+
     <div class="container contentContainer" id="containerBus">
-        <h4>Lines Bus!</h4>
-
-        <button class="btn btn-sm" id="test">Test</button>
         <div id="SearchBus">
-                <input type="text" class="form-group" id="inputSearshBus" placeholder="Enter Line">
-                <button class="btn form-group btn-sm" id="btnSearchBus">Search Bus</button>
-
+            <input type="text" class="form-group" id="inputSearshBus" placeholder="Enter Line">
+            <button class="btn form-group btn-sm" id="btnSearchBus">Search Bus</button>
             <input type="text" class="form-group" id="inputSearshStop" placeholder="Enter Stop Name" style="margin-left:50px;">
             <button class="btn form-group btn-sm" id="btnSearchStop">Search Stop Point</button>
             <p class="text-danger" id="errorSearchBus"></p>
+            <p class="text-danger" id="errorSearchStop"></p>
+            <div class="container text-left" id="resultSearch">
+                <button class="btn btn-sm" id="btnSearchHide">Hide result search</button>
+
+                <table class="table" id="tableResultSearch"></table>
+            </div>
+            <hr />
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-2">
                     <button class="btn btn-sm" id="btnShowBus">Show all lines</button>
-                    <div id="busLines">                        
+                    <div id="busLines">
                         <table class="table" id="tableAllBus"></table>
                     </div>
                 </div>
@@ -65,63 +67,62 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <div class="bg-warning" id="timeTable">
-                        
-                        <h3 class="text-success">The time dial stop point</h3>
-                        <hr/>
+                        <h3 class="bg-info">Information of a stop point</h3>
+                        <hr />
                         <h4 class="text-success" id="hStopPointName"> Select a stop point</h4>
                         <div id="idLineStopTable">
                             <hr />
-                            <h5 class="text-success">Available routes:</h5>
-                            <h5 class="text-success" id="availableRoute"></h5>
+                            <h4 class="text-success">Available routes:</h4>
+                            <table class="table text-center" id="tableAvaibleRouts"></table>
                         </div>
-                        <table class="table" id="tableTimeArrivals"></table>
+                        <h4 class="text-success">Time table (arriving buses)<button class="btn btn-xs" id="btnUpdateTimeTable"><span class="glyphicon glyphicon-refresh"></span></button></h4>
+                        <table class="table text-center" id="tableTimeArrivals"></table>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </div>
-    <div class="container contentContainer" id="containerDLR">
-        <h3>Container DLR!</h3>
-    </div>
-    <div class="container contentContainer" id="containerNRail">
-        <h3>Container National Rail!</h3>
     </div>
 </div>
 
-
-
-
-
-
 <script id="addLinesTubeTmpl" type="text/x-jquery-tmpl">
-    <tr class="containerTr table-bordered" id="${Id}">        
-            <td class="tdNameTube">${Name}</td>
-            <td class="tdTypeTube">${ServiceType}</td>
+    <tr class="containerTr table-bordered" id="${Id}">
+        <td class="tdNameTube">${Name}</td>
+        <td class="tdTypeTube">${ServiceType}</td>
     </tr>
 </script>
 
 <script id="addStationsTubeTmpl" type="text/x-jquery-tmpl">
     <tr class="containerTr table-bordered" id="${Id}">
-        <td class="tdNameTubeStation">${Name}</td>       
+        <td class="tdNameTubeStation">${Name}</td>
     </tr>
 </script>
+
 <script id="addLinesBusTmpl" type="text/x-jquery-tmpl">
     <tr class="containerTrBus table-bordered" id="${Id}">
         <td><a href="#"><div class="text-center">${Name}</div></a></td>
     </tr>
 </script>
+
 <script id="addStationsBusTmpl" type="text/x-jquery-tmpl">
     <tr class="table-bordered trStationBus" stationName="${Name}" id="${Id}">
         <td>${Name}</td>
     </tr>
 </script>
+
 <script id="addTimeTableTmpl" type="text/x-jquery-tmpl">
     <tr class="table-bordered" id="${Id}">
         <td class="bg-info">${NameLine}</td>
-        <td class="table-bordere bg-success">${Destination}</td>
+        <td class="text-left table-bordere bg-success">${Destination}</td>
         <td class="bg-warning">${TimeArrive}</td>
+    </tr>
+</script>
+
+<script id="addRoutsTmpl" type="text/x-jquery-tmpl">
+    <tr class="table-bordered" id="${Id}">
+        <td class="bg-info">${Id}</td>
+        <td class="table-bordere bg-success">${Name}</td>
+        <td class="bg-warning">${ServiceType}</td>
     </tr>
 </script>

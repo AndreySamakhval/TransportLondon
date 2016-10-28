@@ -15,7 +15,7 @@ namespace TransportLondon.Services
         string GetLineInfo(string id);
         List<StopViewModel> GetStops(string id);
         List<LineStopViewModel> GetPrediction(string id);
-        string GetRoutes(string id);
-        void test(string id);////////////////////////////////////////
+        List<LineBusViewModel> GetRoutes(string id);
+        List<StopViewModel> SearchStop(string name);
     }
 }

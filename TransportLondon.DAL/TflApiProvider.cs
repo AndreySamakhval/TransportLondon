@@ -15,11 +15,11 @@ namespace TransportLondon.DAL
     {
         private const string AppID = "292f5d74";
         private const string Key = "3a7b5c90d215148b1f642257236147db";
-        private readonly string appParameters;// = string.Format("?app_id={0}&app_key={1}",AppID,Key);
+        private readonly string appParameters;
 
         public TflApiProvider()
         {
-            appParameters = string.Format("?app_id={0}&app_key={1}", AppID, Key);
+            appParameters = string.Format("app_id={0}&app_key={1}", AppID, Key);
         }
 
         //get json-string
@@ -27,13 +27,12 @@ namespace TransportLondon.DAL
         {
             string result="";
 
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url + appParameters + parameters);
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url + "?" + parameters + appParameters);
             request.ContentType = "application / json; charset = utf - 8";
             HttpWebResponse response;
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
-
                 if (response.StatusCode == HttpStatusCode.OK)
                     using (StreamReader stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
                     {
@@ -43,7 +42,6 @@ namespace TransportLondon.DAL
             }
             catch(WebException)
             {
-                //return null;
                 result = null;
             }
             return result;

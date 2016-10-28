@@ -1,72 +1,74 @@
 ﻿body {
 }
-#navIndex{
-    margin-bottom:40px;
-    text-align:center;
+#navIndex {
+    margin-bottom: 40px;
+    text-align: center;
 }
-#mainContainer{
-    margin-bottom:200px;
+#mainContainer {
+    margin-bottom: 300px;
 }
-.contentContainer{
-   display:none;
- }
-#tableLineTube{
-    background-color:whitesmoke;
-    margin-top:20px;
+.contentContainer {
+    display: none;
 }
-.containerTr{
+#tableLineTube {
+    background-color: #dff0d8;
+    margin-top: 20px;
+    font-size: 16px;
 }
-.tdNameTube{
-    margin:0px;
-    width:150px !important;
+.tdNameTube {
+    width: 150px !important;
 }
-.tdTypeTube{
-    margin:0px;
-    width:100px !important;
+.tdTypeTube {
+    width: 100px !important;
 }
-#tableStaationsTube{
-    width:300px;   
-    background-color:whitesmoke;
+#tableStaationsTube {
+    width: 300px;
+    background-color: whitesmoke;
 }
-#scrolTable{
-        width:320px;
-     height:260px;
-    overflow-y:auto;
+#scrolTable {
+    margin-top: 20px;
+    width: 320px;
+    height: 260px;
+    overflow-y: auto;
 }
-#tubeStations{
-    display:none;
+#tubeStations {
+    display: none;
+    margin-top: 20px;
 }
-
-#btnHideStationTube{
+#divMapsTube {
+    margin-top: 50px;
+    display: none;
+    height: 700px !important;
+    width: 700px !important;
 }
-#divMapsTube{
-    display:none;
-    height:700px !important;
-    width:700px !important;
+#tdActive {
+    width: 5px !important;
 }
-#tdActive{
-    width:5px !important;
+#tableAllBus {
+    width: 100px;
 }
-#tableAllBus{
-    width:100px;
+#SearchBus {
+    margin: 10px;
 }
-#SearchBus{
-    margin:10px;
+#showLineDestination {
+    background-color: lightblue;
 }
-#showLineDestination{
-    background-color:lightblue;
+#busLines {
+    width: 100px;
+    height: 1000px;
+    overflow-y: auto;
 }
-#busLines{
-       width:100px;
-     height:1000px;
-    overflow-y:auto;
+#tableStationBus {
+    background-color: snow;
 }
-#tableStationBus{
-        background-color:snow;
-        /*background-color:lightcyan*/
+#busStations {
+    height: 1000px;
+    overflow-y: auto;
 }
-#busStations{
-         height:1000px;
-    overflow-y:auto;
+#resultSearch {
+    text-align: left;
+    width: 500px;
+    display: none;
+    height: 100px;
+    overflow-y: auto;
 }
-
